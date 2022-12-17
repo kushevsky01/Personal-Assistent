@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://semantic-ui.com/dist/semantic.min.css">
+    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+    <script src="https://semantic-ui.com/javascript/library/jquery.min.js"></script>
+    <style>
+        body, h2, h3, h4, h5 {
+            font-family: "Raleway", sans-serif
+        }
+
+        table {
+            border-spacing: 7px 11px;
+            text-align: center;
+            width: 100%;
+        }
+
+        td, th {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 30%;
+            font-size: 35px;
+            color: #1a1f25;
+            text-align: center;
+            text-decoration: none !important;
+            background: #e6b333;
+            margin-bottom: 3px;
+
+        }
+
+        .circle:hover {
+            color: #e6b333;
+            background: #1a1f25;
+        }
+
+        h1 {
+            display: inline;
+            border-bottom: 3px solid #f9dd94
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #2d3436;
+        }
+
+        .contentright {
+            text-align: center;
+            width: 40%;
+            margin-left: 700px;
+            flex-basis: 50%;
+            padding: 10px 20px;
+            background: blue;
+            box-shadow: 0px 0px 7px 5px #e6b333;
+        }
+
+        .split {
+            height: 60%;
+            width: 38%;
+            position: fixed;
+            z-index: 1;
+            top: 30%;
+            overflow-x: auto;
+            padding-top: 20px;
+            border-radius: 10%;
+            box-shadow: 0.4em 0.4em 7px rgba(122, 122, 122, 0.5);
+
+
+        }
+
+        /* Control the left side */
+        .left {
+            left: 10%;
+            background-color: #c0c0c0;
+        }
+
+        /* Control the right side */
+        .right {
+            scrollbar-arrow-color: #e6b333;
+            scrollbar-base-color: #e6b333;
+            right: 10%;
+            background-color: #d3d3d3;
+        }
+
+        /* If you want the content centered horizontally and vertically */
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .middle {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .btn {
+
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: block;
+            color: black;
+            font-size: 35px;
+            font-family: "montserrat";
+            text-decoration: none;
+            margin: 90px;
+            border: 2px solid #e6b333;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: 1s all ease;
+            border-radius: 50%;
+        }
+
+        .btn::before {
+            background: #e6b333;
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: all 0.6s ease;
+        }
+
+        .btn1::before {
+            width: 0%;
+            height: 100%;
+        }
+
+        .btn1:hover::before {
+            width: 100%;
+        }
+
+        .ui.list .list > .item .description, .ui.list > .item .description {
+            display: block;
+            margin-top: 15%;
+            color: white;
+        }
+
+        *, ::after, ::before {
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+        }
+
+        .ui.list .list > .item > .content, .ui.list > .item > .content {
+            line-height: 1.14285714em;
+        }
+
+        .ui.list .list > .item, .ui.list > .item, ol.ui.list li, ul.ui.list li {
+            list-style-type: none;
+            list-style-position: outside;
+            line-height: 1.14285714em;
+        }
+
+        .ui.list {
+            font-size: 1em;
+        }
+
+        .ui.list, ol.ui.list, ul.ui.list {
+            list-style-type: none;
+        }
+
+        body {
+            font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 1.4285em;
+            color: rgba(0, 0, 0, .87);
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            overflow: auto;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.7s ease-in 0s;
+        }
+
+        .popup {
+            top: 35%;
+            left: 0;
+            right: 0;
+            font-size: 14px;
+            margin: auto;
+            width: 80%;
+            min-width: 200px;
+            max-width: 600px;
+            position: absolute;
+            padding: 15px 20px;
+            border: 1px solid #666;
+            background-color: #1a1f25;
+            z-index: 1000;
+            border-radius: 10px;
+            font: 14px/18px 'Tahoma', Arial, sans-serif;
+            box-shadow: 0 0px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        .close {
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            border: none;
+            border-radius: 50%;
+            background-color: rgba(0, 130, 230, 0.9);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .close:before {
+            color: rgba(255, 255, 255, 0.9);
+            content: "X";
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            text-decoration: none;
+            text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+        }
+
+        .close:hover {
+            background-color: rgba(180, 20, 14, 0.8);
+        }
+
+        #overlay .popup p.zag {
+            margin: 20px 0 10px;
+            padding: 0 0 6px;
+            color: #e6b333;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #e6b333;
+        }
+
+        #overlay1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            overflow: auto;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.7s ease-in 0s;
+        }
+
+        .popup {
+            top: 35%;
+            left: 0;
+            right: 0;
+            font-size: 14px;
+            margin: auto;
+            width: 80%;
+            min-width: 200px;
+            max-width: 600px;
+            position: absolute;
+            padding: 15px 20px;
+            border: 1px solid #666;
+            background-color: #1a1f25;
+            z-index: 1000;
+            border-radius: 10px;
+            font: 14px/18px 'Tahoma', Arial, sans-serif;
+            box-shadow: 0 0px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        .close {
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            border: none;
+            border-radius: 50%;
+            background-color: rgba(0, 130, 230, 0.9);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .close:before {
+            color: rgba(255, 255, 255, 0.9);
+            content: "X";
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            text-decoration: none;
+            text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+        }
+
+        .close:hover {
+            background-color: rgba(180, 20, 14, 0.8);
+        }
+
+        #overlay1 .popup p.zag {
+            margin: 20px 0 10px;
+            padding: 0 0 6px;
+            color: #e6b333;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #e6b333;
+        }
+
+        #overlay2 .popup p.zag {
+            margin: 20px 0 10px;
+            padding: 0 0 6px;
+            color: #e6b333;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #e6b333;
+        }
+
+        #overlay2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            overflow: auto;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.7s ease-in 0s;
+        }
+
+        .popup {
+            top: 35%;
+            left: 0;
+            right: 0;
+            font-size: 14px;
+            margin: auto;
+            width: 80%;
+            min-width: 200px;
+            max-width: 600px;
+            position: absolute;
+            padding: 15px 20px;
+            border: 1px solid #666;
+            background-color: #1a1f25;
+            z-index: 1000;
+            border-radius: 10px;
+            font: 14px/18px 'Tahoma', Arial, sans-serif;
+            box-shadow: 0 0px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        .close {
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            border: none;
+            border-radius: 50%;
+            background-color: rgba(0, 130, 230, 0.9);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .close:before {
+            color: rgba(255, 255, 255, 0.9);
+            content: "X";
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            text-decoration: none;
+            text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+        }
+
+        .close:hover {
+            background-color: rgba(180, 20, 14, 0.8);
+        }
+
+        #overlay2 .popup p.zag {
+            margin: 20px 0 10px;
+            padding: 0 0 6px;
+            color: #e6b333;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #e6b333;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large"
+     style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+    <a class="w3-bar-item w3-center w3-padding-" style="color:#e6b333"><p th:text="${user.username}"></p></a>
+    <a href="javascript:void()" onclick="w3_close()"
+       class="w3-bar-item w3-button w3-center w3-padding-32 w3-padding-16 w3-hover-orange"
+       style="color:#e6b333">CLOSE</a>
+    <a href="/main" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32 w3-hover-orange"
+       style="color:#e6b333">ToDoList</a>
+    <a href="/logout" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32 w3-hover-orange"
+       style="color:#e6b333"> EXIT</a>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-black w3-xlarge w3-padding-16">
+    <span class="w3-left w3-padding"><p style="color: #e6b333">Online Note (admin)</p></span>
+    <a href="javascript:void(0)" class="w3-right w3-padding-22" onclick="w3_open()">
+        <div class="circle" style="margin-left:-3cm;"><p th:text="${user.username.charAt(0)}"></p></div>
+    </a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+     id="myOverlay"></div>
+
+<script>
+    // Script to open and close sidebar
+    function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+</script>
+
+<div class="ui segment"
+     style="width:80%; margin-left:15%; margin-bottom:50%;  background:#4c5253;position:absolute; top:38%;">
+
+    <div class="ui one column very relaxed grid">
+        <div class="column">
+            <table>
+                <thead>
+                <th>ID</th>
+                <th>UserName</th>
+                <th>Password</th>
+                <th>Change Role</th>
+                <th>Activity</th>
+                </thead>
+                <tr th:each="users: ${allUsers}">
+                    <scan th:if="${user.username} != ${users.username}">
+                        <td th:text="${users.id}"></td>
+                        <td th:text="${users.username}"></td>
+                        <td th:text="${users.password}"></td>
+                        <td>
+                            <form th:action="@{/admin/userRole}" method="post">
+                                <input type="hidden" name="userId" th:value="${users.id}"/>
+<!--                                <input type="hidden" name="roleId" th:value="${role.id}"/>-->
+                                <input type="hidden" name="roleName" th:value="${users.role}"/>
+                                <button type="submit" style="background:#4c5253;border:0;" th:text="${users.role}">
+                                </button>
+                            </form>
+                        </td>
+
+
+                        <td>
+                            <form th:action="@{/admin/userActivity}" method="post">
+                                <input type="hidden" name="userId" th:value="${users.id}"/>
+                                <input type="hidden" name="userActivity" th:value="${users.active}"/>
+                                <button type="submit" style="background:#4c5253;border:0;" th:text="${users.active}">
+                                </button>
+                            </form>
+                        </td>
+
+                        <td>
+                            <form th:action="@{/admin/deleteUser}" method="post">
+                                <input type="hidden" name="userId" th:value="${users.id}"/>
+                                <button type="submit" style="background:#4c5253;border:0;">
+                                    <a>
+                                        <i class="trash alternate outline icon" style="background:#4c5253; "></i>
+                                    </a>
+                                </button>
+                            </form>
+                        </td>
+                    </scan>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</scan>
+
+</body>
+</html>
+
+
+
